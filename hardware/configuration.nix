@@ -10,6 +10,8 @@
 {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
+
+    ./keychron-keyboard.nix
   ];
 
   boot.initrd.availableKernelModules = [
@@ -94,15 +96,4 @@
   # Automatically sets up secure udev rules and creates the 'i2c' group
   # For communication with monitors via ddcutil
   hardware.i2c.enable = true;
-
-  services.udev.extraRules = ''
-    # Keychron hidraw (Needed for WebUSB access on Chromium browsers)
-    KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="3434", TAG+="uaccess"
-
-    # Configure USB
-    SUBSYSTEM=="usb",  ATTRS{idVendor}=="3434", ATTRS{idProduct}=="0a38", TAG+="uaccess"
-
-    # Configure 2.4GHz
-    SUBSYSTEM=="usb",  ATTRS{idVendor}=="3434", ATTRS{idProduct}=="d030", TAG+="uaccess"
-  '';
 }
