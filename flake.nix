@@ -74,7 +74,7 @@
   outputs =
     { nixpkgs, ... }@args:
     let
-      vars = import ./variables.nix;
+      vars = import ./src/variables.nix;
     in
     {
       nixosConfigurations.${vars.hostName} = nixpkgs.lib.nixosSystem {
@@ -85,8 +85,8 @@
         };
 
         modules = [
-          ./nix-settings.nix
-          ./configuration.nix
+          ./src/nix-settings.nix
+          ./src/configuration.nix
           args.home-manager.nixosModules.default
           args.flatpaks.nixosModules.default
         ];

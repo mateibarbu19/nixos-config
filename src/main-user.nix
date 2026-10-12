@@ -9,7 +9,7 @@
 let
   iconPath = "/var/lib/AccountsService/icons/${args.vars.mainUsername}";
   userConfigPath = "/var/lib/AccountsService/users/${args.vars.mainUsername}";
-  iconSource = ./images/profile_picture.jpg;
+  iconSource = ../images/profile_picture.jpg;
 in
 {
   # Define a user account. Don't forget to set a password with ‘passwd’.
