@@ -12,6 +12,7 @@
     (modulesPath + "/installer/scan/not-detected.nix")
 
     ./keychron-keyboard.nix
+    ./monitors.nix
     ./printers-and-scanners.nix
   ];
 
@@ -27,7 +28,6 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [
     "kvm-intel" # for virtualization
-    "i2c-dev" # for exploiting the DDC (Display Data Channel)
   ];
   boot.extraModulePackages = [ ];
 
@@ -88,13 +88,4 @@
 
   nixpkgs.hostPlatform = lib.mkDefault args.vars.system;
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-
-  # NOTE: Temporary solution for my LG27GS95QE OLED monitor
-  # fonts.fontconfig.antialias = false;
-  # fonts.fontconfig.subpixel.rgba = "rgb";
-  fonts.fontconfig.subpixel.lcdfilter = "light";
-
-  # Automatically sets up secure udev rules and creates the 'i2c' group
-  # For communication with monitors via ddcutil
-  hardware.i2c.enable = true;
 }

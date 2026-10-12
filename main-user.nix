@@ -24,7 +24,6 @@ in
     extraGroups = [
       "networkmanager"
       "wheel"
-      "i2c"
       "dialout"
     ];
 
@@ -47,7 +46,6 @@ in
       gnome-pomodoro
       gnome-sound-recorder
       eyedropper
-      gnomeExtensions.brightness-control-using-ddcutil
 
       ffmpeg
       krita

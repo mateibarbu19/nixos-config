@@ -223,8 +223,8 @@ in
           ];
         };
         "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
-          command = "${pkgs.lib.getExe args.switch-monitor-input-source}";
           name = "Switch Input Source for the Dell P2419HC Monitor";
+          command = "${pkgs.lib.getExe (pkgs.callPackage ./programs/switch-monitor-input-source.nix { })}";
           binding = "<Shift><Control><Alt>d";
           enable-in-lockscreen = true;
         };

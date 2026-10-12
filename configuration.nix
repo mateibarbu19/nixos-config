@@ -16,15 +16,6 @@ let
     system = pkgs.stdenv.hostPlatform.system; # TODO: what should I do with system?
     config.allowUnfree = true;
   };
-  switch-monitor-input-source = pkgs.writeShellApplication {
-    name = "switch_monitor_input_source";
-
-    runtimeInputs = [
-      pkgs.ddcutil
-    ];
-
-    text = builtins.readFile ./programs/switch_monitor_input_source.sh;
-  };
 
   themes = import ./themes.nix {
     inherit pkgs;
@@ -95,7 +86,6 @@ in
 
           zen-browser
           firefox-addons
-          switch-monitor-input-source
           zellij-bin
 
           deltaThemes
@@ -230,10 +220,6 @@ in
     wget
     zip
     unzip
-
-    # Monitor quality of life
-    ddcutil
-    switch-monitor-input-source
 
     # Virtualisation
     dive # look into docker image layers
