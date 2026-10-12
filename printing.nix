@@ -1,8 +1,7 @@
 {
   pkgs,
   vars,
-  ...
-}@args:
+}:
 {
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -32,7 +31,24 @@
     ];
   };
 
-  users.users.${args.vars.mainUsername}.extraGroups = [
+  # Configure scanners
+  hardware.sane = {
+    enable = true;
+
+    # Prefer airscan over the default backend...
+    # Which doesn't support brightness tweaks for my Xerox B215 machine.
+    extraBackends = [ pkgs.sane-airscan ];
+    disabledDefaultBackends = [ "escl" ];
+  };
+
+  # mDNS, so sane-airscan can discover the network scanner (and .local names
+  # resolve).
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+  };
+
+  users.users.${vars.mainUsername}.extraGroups = [
     "scanner"
     "lp"
   ];
