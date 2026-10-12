@@ -216,11 +216,6 @@ in
         };
       };
 
-      home.file."${config.xdg.dataHome}/bin/switch_monitor_input_source.sh" = {
-        source = ./programs/switch_monitor_input_source.sh;
-        executable = true;
-      };
-
       dconf.settings = {
         "org/gnome/settings-daemon/plugins/media-keys" = {
           custom-keybindings = [
@@ -228,8 +223,8 @@ in
           ];
         };
         "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
-          name = "Set Dell P2419HC Input Source to DisplayPort";
           command = "${pkgs.lib.getExe args.switch-monitor-input-source}";
+          name = "Switch Input Source for the Dell P2419HC Monitor";
           binding = "<Shift><Control><Alt>d";
           enable-in-lockscreen = true;
         };
