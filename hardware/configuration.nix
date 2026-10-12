@@ -12,6 +12,7 @@
     (modulesPath + "/installer/scan/not-detected.nix")
 
     ./keychron-keyboard.nix
+    ./printers-and-scanners.nix
   ];
 
   boot.initrd.availableKernelModules = [

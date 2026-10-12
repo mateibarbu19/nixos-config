@@ -81,12 +81,6 @@ in
           ;
       }
     ))
-    (import ./hardware/printers-and-scanners.nix {
-      inherit
-        pkgs
-        vars
-        ;
-    })
     (import ./home.nix (
       let
         zen-browser = parentArgs.zen-browser;

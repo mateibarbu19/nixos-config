@@ -1,6 +1,7 @@
 {
   pkgs,
   vars,
+  ...
 }:
 {
   # Enable CUPS to print documents.
