@@ -8,6 +8,7 @@
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
 
+    ./filesystems.nix
     ./keychron-keyboard.nix
     ./monitors.nix
     ./printers-and-scanners.nix
@@ -28,51 +29,11 @@
   ];
   boot.extraModulePackages = [ ];
 
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-label/EFI";
-    fsType = "vfat";
-    options = [
-      "fmask=0077"
-      "dmask=0077"
-    ];
-  };
-
-  fileSystems."/" = {
-    device = "/dev/disk/by-label/LinuxRoot";
-    fsType = "ext4";
-  };
-
-  fileSystems."/media/${args.vars.mainUsername}/Data" = {
-    device = "/dev/disk/by-label/Data";
-    fsType = "ext4";
-    options = [
-      "user"
-      "defaults"
-      "X-mount.owner=${args.vars.mainUsername}"
-      "X-mount.group=users"
-    ];
-  };
-
-  fileSystems."/mnt/my-ramdisk" = {
-    device = "none";
-    fsType = "tmpfs";
-    options = [
-      "user"
-      "defaults"
-      "X-mount.owner=${args.vars.mainUsername}"
-      "X-mount.group=users"
-      "size=100M"
-    ];
-  };
-
   # Disable swap
   boot.kernel.sysctl = {
     "vm.swappiness" = 0;
   };
   swapDevices = [ ];
-
-  # Don't bloat disk with tmp files
-  boot.tmp.cleanOnBoot = true;
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
