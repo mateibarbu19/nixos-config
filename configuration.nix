@@ -81,7 +81,7 @@ in
           ;
       }
     ))
-    (import ./printing.nix {
+    (import ./printing-and-scanning.nix {
       inherit
         pkgs
         vars
