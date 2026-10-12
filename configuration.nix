@@ -81,6 +81,12 @@ in
           ;
       }
     ))
+    (import ./printing.nix {
+      inherit
+        pkgs
+        vars
+        ;
+    })
     (import ./home.nix (
       let
         zen-browser = parentArgs.zen-browser;
@@ -163,9 +169,6 @@ in
     layout = "ro";
     variant = "";
   };
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
 
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
