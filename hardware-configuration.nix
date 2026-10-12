@@ -92,15 +92,20 @@
     ensurePrinters = [
       {
         name = "XEROX_B215";
-        deviceUri = "socket://192.168.1.2";
-        model = "drv:///sample.drv/generic.ppd";
+        # IPP is now the new universal standard. PostScript based printing has become obsolete.
+        # Note: lpadmin queries the printer when the queue is created, so it
+        # has to be powered on during a rebuild that (re)creates this queue.
+        deviceUri = "ipp://192.168.1.2/ipp/print";
+        model = "everywhere";
+
         description = "Xerox B215 Multifunctional Printer";
         location = "Living Room";
+
+        # Options passed to lpadmin, which can be listed with
+        # `lpoptions -l -p <printer-name>
         ppdOptions = {
           PageSize = "A4";
-          InputSlot = "Default";
           Duplex = "DuplexNoTumble";
-          Option1 = "True";
         };
       }
     ];
@@ -114,7 +119,7 @@
   # Automatically sets up secure udev rules and creates the 'i2c' group
   # For communication with monitors via ddcutil
   hardware.i2c.enable = true;
-  
+
   services.udev.extraRules = ''
     # Keychron hidraw (Needed for WebUSB access on Chromium browsers)
     KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="3434", TAG+="uaccess"
