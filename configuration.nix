@@ -54,7 +54,7 @@ in
 
   imports = [
     ./cachix.nix
-    (import ./hardware-configuration.nix (
+    (import ./hardware/configuration.nix (
       let
         modulesPath = args.modulesPath;
       in
@@ -81,7 +81,7 @@ in
           ;
       }
     ))
-    (import ./printing-and-scanning.nix {
+    (import ./hardware/printers-and-scanners.nix {
       inherit
         pkgs
         vars
