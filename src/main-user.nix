@@ -61,7 +61,7 @@ in
       shortwave
 
       # Instant Messaging
-      signal-desktop
+      unstablePkgs.signal-desktop
 
       # PDF processing
       pdftk
