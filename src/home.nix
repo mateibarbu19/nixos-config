@@ -248,12 +248,14 @@ in
           ];
 
           disable-user-extensions = false; # Enables extension system
+          # Use `dconf read /org/gnome/shell/enabled-extensions` to know what to write here
           enabled-extensions = [
             "gsconnect@andyholmes.github.io"
             "system-monitor@gnome-shell-extensions.gcampax.github.com"
             "status-icons@gnome-shell-extensions.gcampax.github.com"
             "pomodoro@arun.codito.in"
             "display-brightness-ddcutil@themightydeity.github.com"
+            "dash-to-dock@micxgx.gmail.com"
           ];
         };
         "org/gnome/shell/extensions/system-monitor" = {
