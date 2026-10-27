@@ -209,8 +209,6 @@ in
     wl-clipboard # copying text from the terminal in a Wayland session
     gdm-settings
     gnome-tweaks
-    gnomeExtensions.system-monitor
-    gnomeExtensions.status-icons
 
     # System tools for all users
     dust

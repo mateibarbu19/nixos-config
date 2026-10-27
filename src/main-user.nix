@@ -43,6 +43,9 @@ in
       # A visual software center for NixOS
       nix-software-center.packages.${vars.system}.nix-software-center
 
+      gnomeExtensions.dash-to-dock
+      gnomeExtensions.system-monitor
+      gnomeExtensions.status-icons
       gnome-pomodoro
       gnome-sound-recorder
       eyedropper
@@ -92,7 +95,6 @@ in
 
       # For Logitech devices
       solaar
-      
     ];
   };
 
