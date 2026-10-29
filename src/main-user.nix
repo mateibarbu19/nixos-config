@@ -90,6 +90,7 @@ in
       # Online tools
       teams-for-linux
       ungoogled-chromium
+      unstablePkgs.bitwarden-desktop
 
       mission-center
 
